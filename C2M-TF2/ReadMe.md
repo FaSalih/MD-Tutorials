@@ -12,6 +12,7 @@ Please refer to the included pdf presentation for a schematic of the general wor
 ## Instructions:
 
 1. Create `molecule.lt` files for every residue/molecule in your system.
+
     a. Navigate to the directory `C2M-TF2/creating-mol-lt-files` in your terminal.
     ```
     cd C2M-TF2/creating-mol-lt-files
@@ -31,6 +32,7 @@ Please refer to the included pdf presentation for a schematic of the general wor
     ```
 
 1. Pack the system and run MolTemplate (combnied in 1 executable).
+
     a. Navigate to the directory `C2M-TF2/packmol+moltemplate` in your terminal.
     ```
     cd C2M-TF2/creating-mol-lt-files
@@ -47,3 +49,5 @@ Please refer to the included pdf presentation for a schematic of the general wor
 
 ## Notes:
 1. `pdb` files can be downloaded from the [Protein Data Bank](https://www1.rcsb.org/), or other relevant repositories like [PubChem](https://pubchem.ncbi.nlm.nih.gov/). They can also be generated using various tools like [MolView](https://molview.org/), [RDKit.py](https://github.com/rdkit/rdkit) or Open Babel. An example script for generating `pdb` files using RDKit is available at: `C2M-TF2/creating-mol-lt-files/generate-pdb.py`
+
+2. Different force field templates can be found in the `${INSTALLATION-DIR}/moltemplate/moltemplate/force_fields` folder. Additional force field templates can be added from online sources.
