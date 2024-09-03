@@ -1,0 +1,25 @@
+import "TF2.lt"  # <- This defines the TF2
+
+import "C2M.lt"  # <- This defines the Emim ion
+
+# Periodic boundary conditions:
+write_once("Data Boundary") {
+   0.0  30.00  xlo xhi
+   0.0  30.00  ylo yhi
+   0.0  30.00  zlo zhi
+}
+
+# Create molecules onto grid
+
+anion  = new TF2 [5].move(0.00, 0.00, 3.00) 
+                 [5].move(0.00, 3.00, 0.01) 
+                 [5].move(3.00, 0.01, 0.01)
+
+cation  = new C2M [5].move(0.00, 0.00, 3.00)
+                  [5].move(0.00, 3.00, 0.01)
+                  [5].move(3.00, 0.01, 0.01)
+
+
+# anion and cation grids overlap => move the cations over by 2 angstrom in each dimension
+cation[*][*][*].move(3.0,3.0,3.0)
+

@@ -1,0 +1,75 @@
+import "gaff2.lt"
+
+
+C2M inherits GAFF2 {
+
+  #  atomId molId atomType charge X Y Z
+
+  write("Data Atoms"){
+    $atom:C01 $mol:m @atom:cc -0.0346 0.89 0.908 -1.026
+    $atom:C04 $mol:m @atom:cc -0.1153 2.944 1.764 -0.647
+    $atom:C03 $mol:m @atom:cd -0.1203 2.07 2.771 -0.542
+    $atom:H07 $mol:m @atom:h5 0.256 0.088 0.234 -1.24
+    $atom:H09 $mol:m @atom:h4 0.233 4.006 1.818 -0.527
+    $atom:H08 $mol:m @atom:h4 0.234 2.29 3.794 -0.321
+    $atom:C05 $mol:m @atom:c3 -0.0054 -0.525 2.92 -0.782
+    $atom:H0B $mol:m @atom:h1 0.096033 -1.312 2.262 -0.475
+    $atom:H0C $mol:m @atom:h1 0.096033 -0.459 3.741 -0.1
+    $atom:H0D $mol:m @atom:h1 0.096033 -0.733 3.288 -1.765
+    $atom:N00 $mol:m @atom:na -0.0171 0.749 2.187 -0.792
+    $atom:C06 $mol:m @atom:c3 0.0183 2.688 -0.782 -1.168
+    $atom:H0F $mol:m @atom:h1 0.0952 2.921 -0.919 -2.203
+    $atom:C0N $mol:m @atom:c3 -0.1261 3.966 -0.962 -0.327
+    $atom:H0O $mol:m @atom:hc 0.072367 4.356 -1.947 -0.478
+    $atom:H0P $mol:m @atom:hc 0.072367 4.696 -0.239 -0.628
+    $atom:H0Q $mol:m @atom:hc 0.072367 3.734 -0.825 0.709
+    $atom:N02 $mol:m @atom:na -0.0181 2.152 0.571 -0.961
+    $atom:H0E $mol:m @atom:h1 0.0952 1.959 -1.504 -0.867
+  } # Atoms section
+
+  #  bondId  atomId1 atomId2
+
+  write("Data Bond List") {
+    $bond:b1  $atom:C01  $atom:H07
+    $bond:b2  $atom:C01  $atom:N00
+    $bond:b3  $atom:C01  $atom:N02
+    $bond:b4  $atom:C04  $atom:C03
+    $bond:b5  $atom:C04  $atom:H09
+    $bond:b6  $atom:C04  $atom:N02
+    $bond:b7  $atom:C03  $atom:H08
+    $bond:b8  $atom:C03  $atom:N00
+    $bond:b9  $atom:C05  $atom:H0B
+    $bond:b10  $atom:C05  $atom:H0C
+    $bond:b11  $atom:C05  $atom:H0D
+    $bond:b12  $atom:C05  $atom:N00
+    $bond:b13  $atom:C06  $atom:H0F
+    $bond:b14  $atom:C06  $atom:C0N
+    $bond:b15  $atom:C06  $atom:N02
+    $bond:b16  $atom:C06  $atom:H0E
+    $bond:b17  $atom:C0N  $atom:H0O
+    $bond:b18  $atom:C0N  $atom:H0P
+    $bond:b19  $atom:C0N  $atom:H0Q
+  } # Bonds section
+
+}  # C2M
+
+
+
+
+
+
+# -------- INSTRUCTIONS FOR USING THIS FILE: --------
+# So far, we have just defined (one or more) molecular subunits.
+# If you want to use these molecule(s) in a simulation, you must instantiate
+# copies of them.  To do that you would the "new" command.  For example:
+#
+# C2M_instance = new C2M
+#
+# You could either put this command here, or in a separate file.
+# (...Such as "system.lt".  In that case remember to use moltemplate's
+#  "import" command to import this file beforehand because you must ensure
+#  that the molecules in this file are loaded before they are used.)
+#
+# Note: You can also modify the position and orientation of each copy
+# using the .move() and .rot() commands.  (See the moltemplate manual.)
+# ---------------------------------------------------

@@ -1,0 +1,19 @@
+tolerance 2.0
+
+# The file type of input and output files is PDB
+filetype pdb
+
+# The name of the output file
+output system.pdb
+
+# The system components
+structure C2M.pdb 
+  number 125 
+  inside box 0. 0. 0. 40. 40. 40. 
+end structure
+
+structure TF2.pdb
+  number 125
+  inside box 0. 0. 0. 40. 40. 40. 
+end structure
+

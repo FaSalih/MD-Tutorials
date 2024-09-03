@@ -1,0 +1,16 @@
+import "TF2.lt"  # <- This defines the TF2
+
+import "C2M.lt"  # <- This defines the Emim ion
+
+# Periodic boundary conditions:
+write_once("Data Boundary") {
+   0.0  40.00  xlo xhi
+   0.0  40.00  ylo yhi
+   0.0  40.00  zlo zhi
+}
+
+# Create molecules onto grid
+
+cation  = new C2M[125]
+anion  = new TF2[125]
+
