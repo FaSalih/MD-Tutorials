@@ -15,7 +15,7 @@ Please refer to the included pdf presentation for a schematic of the general wor
 
     a. Navigate to the directory `C2M-TF2/creating-mol-lt-files` in your terminal.
     ```
-    cd C2M-TF2/creating-mol-lt-files
+    cd C2M-TF2-lmp/creating-mol-lt-files
     ```
     b. Convert the shell scripts into executables
     ```

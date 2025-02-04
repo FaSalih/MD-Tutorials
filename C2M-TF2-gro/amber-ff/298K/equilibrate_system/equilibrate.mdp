@@ -1,0 +1,33 @@
+; ------------------- EQUILIBRATION RUN (NPT) -------------------
+integrator  = md            ; Algorithm (leap-frog)
+tinit = 0                   ; Starting time [ps]
+dt = 0.002                  ; Time step [ps] (has to be 1fs or LINCS errors will occur with NH thermostat and Parrinellos-Rahman barostats)
+nsteps = 25000000           ; Total number of steps - equivalent to 50 ns
+nstenergy = 10000           ; Write energy every 10 ps
+nstxout = 100000            ; Write coordinates every 100 ps
+
+; Constraints
+constraints = h-bonds       ; Applies to water and H-atoms in Emim ion
+constraint-algorithm = LINCS ; Algorithm for constraint generation
+
+; Thermostat & Barostat for NPT Ensemble
+tcoupl  = v-rescale         ; similar to a langevin thermostat
+tc-grps = system            ; one coupling group - all atoms
+tau_t   = 0.1               ; period for temperature fluctuations at equilibrium [ps] - 1/10 x tau_t reccomended in paper
+ref_t = 298 ; reference temperature, one for each group [K]
+pcoupl  =  C-rescale        ; Berendsen barostat
+pcoupltype = isotropic      ; uniform scaling of box vectors
+nstpcouple = 1              ; frequency to update pressure
+tau_p   = 1.0               ; period for pressure fluctuations at equilibrium [ps]
+compressibility = 9.0e-5    ; isothermal compressibility of Emim-NTF2 [bar^-1]
+ref_p   = 1.0               ; reference pressure, one for each group [bar]
+
+; Non-bonded LJ interactions settings
+rvdw            = 1.20      ; Short-range Van der Waals cut-off
+vdwtype         = Switch    ; Treatment of long range Van der Waals interactions
+rvdw-switch     = 1.18      ; Long range Van der Waals cut-off for switch function
+
+; Electrostatics settings
+coulombtype     = PME       ; Treatment of long range electrostatic interactions
+fourierspacing  = 0.12      ; Grid spacing for FFT, 0.12 nm in k-space for 1.4 nm cut-off - different from annealing settings
+rcoulomb        = 1.20      ; Short-range electrostatic cut-off

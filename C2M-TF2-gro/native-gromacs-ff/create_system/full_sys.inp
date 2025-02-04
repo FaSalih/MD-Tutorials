@@ -1,0 +1,18 @@
+#
+# A mixture of Water, and [HBet][NTF2]
+#
+tolerance 2.0
+filetype pdb
+seed 1
+
+output full_system.pdb
+
+structure C2M_cleaned.pdb
+  number 250
+inside box 0. 0. 0. 69.0 69.0 69.0
+end structure
+
+structure TF2_cleaned.pdb
+number 250
+inside box 0. 0. 0. 69.0 69.0 69.0
+end structure

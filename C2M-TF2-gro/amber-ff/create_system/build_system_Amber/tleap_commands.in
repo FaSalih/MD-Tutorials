@@ -1,0 +1,19 @@
+# Load forcefield files
+source leaprc.gaff
+
+# Load coordinates (residues and full system)
+TF2 = loadmol2 TF2-Amber/TF2.mol2
+C2M = loadmol2 C2M-Amber/C2M.mol2
+full_system = loadPdb full_system.pdb
+
+# Load forcefield modification files
+loadamberparams TF2-Amber/frcmod.TF2
+loadamberparams C2M-Amber/frcmod.C2M
+
+# Define box dimensions from full_system.pdb
+setbox full_system centers
+
+# Generate forcefield and coordinate files (amber format)
+saveAmberParm full_system full_system.prmtop full_system.inpcrd
+
+quit

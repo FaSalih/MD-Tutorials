@@ -1,0 +1,35 @@
+; equilibrate.mdp - used as input into grompp to generate em.tpr
+; ------------------- MELT RUN (NPT) -------------------
+integrator  = md            ; Algorithm (leap-frog)
+tinit = 1000.0              ; Starting time [ps]
+dt = 0.002                  ; Time step [ps]
+nsteps = 5000000            ; Total number of steps - equivalent to 10 ns
+nstxout = 500               ; Write coordinates every 1 ps
+nstenergy = 500             ; Write energies to edr file every 1 ps
+nstlog = 500                ; Write energies to log file every 1 ps
+
+; Constraints
+constraints = h-bonds       ; Applies to water and H-atoms in Emim ion
+constraint-algorithm = LINCS ; Algorithm for constraint generation
+
+; Thermostat & Barostat for NPT Ensemble
+tcoupl  = v-rescale         ; modified Berendsen thermostat
+tc-grps = system            ; one coupling group - all atoms
+tau_t   = 0.1               ; time constant [ps]
+ref_t = 350 ; reference temperature, one for each group [K]
+pcoupl  =  C-rescale        ; Berendsen barostat
+pcoupltype = isotropic      ; uniform scaling of box vectors
+nstpcouple = 1              ; frequency to update pressure
+tau_p   = 1.0               ; time constant [ps]
+compressibility = 9.0e-5    ; isothermal compressibility of Emim-NTF2 [bar^-1]
+ref_p   = 1.0               ; reference pressure, one for each group [bar]
+
+; Non-bonded LJ interactions settings
+rvdw            = 1.20      ; Short-range Van der Waals cut-off
+vdwtype         = Switch    ; Treatment of long range Van der Waals interactions
+rvdw-switch     = 1.18      ; Long range Van der Waals cut-off for switch function
+
+; Electrostatics settings
+coulombtype     = PME       ; Treatment of long range electrostatic interactions
+fourierspacing  = 0.12      ; Grid spacing for FFT, 0.12 nm in k-space for 1.4 nm cut-off
+rcoulomb        = 1.20      ; Short-range electrostatic cut-off
